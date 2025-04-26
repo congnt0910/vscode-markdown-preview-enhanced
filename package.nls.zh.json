@@ -4,6 +4,7 @@
   "customEditorPreviewDisplayName": "Markdown 增强预览",
   "markdown-preview-enhanced.openPreviewToTheSide.title": "MPE:打开侧边预览",
   "markdown-preview-enhanced.openPreview.title": "MPE:打开预览",
+  "markdown-preview-enhanced.openInBrowser.title": "MPE:打开预览",
   "markdown-preview-enhanced.toggleScrollSync.title": "MPE:开关预览滑动同步",
   "markdown-preview-enhanced.toggleLiveUpdate.title": "MPE:开关预览实时更新",
   "markdown-preview-enhanced.toggleBreakOnSingleNewLine.title": "MPE:开关回车换行",

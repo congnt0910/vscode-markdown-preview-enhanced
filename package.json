@@ -59,6 +59,15 @@
         }
       },
       {
+        "command": "markdown-preview-enhanced.openInBrowser",
+        "title": "%markdown-preview-enhanced.openInBrowser.title%",
+        "category": "Markdown",
+        "icon": {
+          "light": "./media/preview-right-light.svg",
+          "dark": "./media/preview-right-dark.svg"
+        }
+      },
+      {
         "command": "markdown-preview-enhanced.toggleScrollSync",
         "title": "%markdown-preview-enhanced.toggleScrollSync.title%"
       },

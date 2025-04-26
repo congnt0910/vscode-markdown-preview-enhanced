@@ -92,7 +92,7 @@ export async function initExtensionCommon(context: vscode.ExtensionContext) {
       },
     });
   }
-
+  
   async function toggleScrollSync() {
     const scrollSync = !getMPEConfig<boolean>('scrollSync');
     await updateMPEConfig('scrollSync', scrollSync, true);
@@ -226,8 +226,24 @@ export async function initExtensionCommon(context: vscode.ExtensionContext) {
   }
 
   async function openInBrowser(uri) {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      return;
+    }
+    if (!uri) {
+      uri = editor.document.uri;
+    }
     const sourceUri = vscode.Uri.parse(uri);
     const previewProvider = await getPreviewContentProvider(sourceUri);
+    previewProvider.initPreview({
+      sourceUri: uri,
+      document: editor.document,
+      cursorLine: getEditorActiveCursorLine(editor),
+      viewOptions: {
+        viewColumn: vscode.ViewColumn.One,
+        preserveFocus: false,
+      },
+    });
     previewProvider.openInBrowser(sourceUri);
   }
 
@@ -964,6 +980,12 @@ export async function initExtensionCommon(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand(
       'markdown-preview-enhanced.openPreview',
       openPreview,
+    ),
+  );
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      'markdown-preview-enhanced.openInBrowser',
+      openInBrowser,
     ),
   );
 
